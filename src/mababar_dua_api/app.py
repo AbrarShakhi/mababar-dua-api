@@ -39,6 +39,17 @@ class MaBabarDuaApi:
                 await send({"type": "lifespan.shutdown.complete"})
                 return
 
+    def _register(
+        self,
+        path: Optional[str],
+        method: str,
+        handler: Callable,
+        middlewares: list[Callable],
+    ) -> Callable:
+        resolved_path = path or f"/{handler.__name__}"
+        self.router.add_route(resolved_path, method, handler, middlewares)
+        return handler
+
     def route(
         self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
     ):
