@@ -74,6 +74,22 @@ class MaBabarDuaApi:
 
         return wrapper
 
+    def patch(
+        self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
+    ):
+        def wrapper(handler: Callable) -> Callable:
+            return self._register(path, "PATCH", handler, middlewares or [])
+
+        return wrapper
+
+    def delete(
+        self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
+    ):
+        def wrapper(handler: Callable) -> Callable:
+            return self._register(path, "DELETE", handler, middlewares or [])
+
+        return wrapper
+
     def route(
         self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
     ):
