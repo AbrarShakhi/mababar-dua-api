@@ -18,8 +18,7 @@ class Request:
 
         raw_headers: list[tuple[bytes, bytes]] = scope.get("headers", [])
         self.headers: dict[str, str] = {
-            k.decode("latin-1").lower(): v.decode("latin-1")
-            for k, v in raw_headers
+            k.decode("latin-1").lower(): v.decode("latin-1") for k, v in raw_headers
         }
 
     @staticmethod
