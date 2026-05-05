@@ -50,6 +50,30 @@ class MaBabarDuaApi:
         self.router.add_route(resolved_path, method, handler, middlewares)
         return handler
 
+    def get(
+        self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
+    ):
+        def wrapper(handler: Callable) -> Callable:
+            return self._register(path, "GET", handler, middlewares or [])
+
+        return wrapper
+
+    def post(
+        self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
+    ):
+        def wrapper(handler: Callable) -> Callable:
+            return self._register(path, "POST", handler, middlewares or [])
+
+        return wrapper
+
+    def put(
+        self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
+    ):
+        def wrapper(handler: Callable) -> Callable:
+            return self._register(path, "PUT", handler, middlewares or [])
+
+        return wrapper
+
     def route(
         self, path: Optional[str] = None, middlewares: Optional[list[Callable]] = None
     ):
