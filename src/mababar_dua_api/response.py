@@ -25,6 +25,18 @@ class Response:
         self._status_code = status_code
         self._extra_headers["content-type"] = "application/json"
 
+    def render(self, template_name: str, context: dict = {}) -> None:
+        path = f"{template_name}.html"
+        with open(path) as fp:
+            template = fp.read()
+        for key, value in context.items():
+            template = re.sub(
+                r"{{\s*" + re.escape(key) + r"\s*}}", str(value), template
+            )
+        self._content = template
+        self._status_code = 200
+        self._extra_headers["content-type"] = "text/html; charset=utf-8"
+
     def _build_headers(self) -> list[tuple[bytes, bytes]]:
         headers: dict[str, str] = {"content-type": f"{self.media_type}; charset=utf-8"}
         headers.update(self._extra_headers)
