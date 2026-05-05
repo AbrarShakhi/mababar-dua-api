@@ -1,5 +1,10 @@
 # MaBabarDuaApi
 
+[![Tests](https://github.com/abrarshakhi/mababar-dua-api/actions/workflows/tests.yml/badge.svg)](https://github.com/abrarshakhi/mababar-dua-api/actions/workflows/tests.yml)
+[![PyPI version](https://img.shields.io/pypi/v/mababar-dua-api)](https://pypi.org/project/mababar-dua-api/)
+[![Python versions](https://img.shields.io/pypi/pyversions/mababar-dua-api)](https://pypi.org/project/mababar-dua-api/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ASGI Python web framework.
 
 ## Installation
@@ -134,6 +139,4 @@ uvicorn example.main:app --reload
 ## License
 
 MIT
-
----
 
